@@ -306,6 +306,30 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
 .why .wtxt{gap:16px}
 .why .txt{max-width:38ch}
 
+/* under the hood */
+details.uth{margin-top:clamp(28px,4vw,44px);border-top:1px solid var(--line);padding-top:16px}
+.dk details.uth{border-top-color:var(--line-d)}
+details.uth summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.dk details.uth summary{color:var(--mute-d)}
+details.uth summary::-webkit-details-marker{display:none}
+details.uth summary::before{content:"+";display:inline-grid;place-items:center;width:20px;height:20px;border:1px solid currentColor;border-radius:50%;font-size:13px;line-height:1}
+details.uth[open] summary::before{content:"−"}
+.uth-body{display:grid;gap:18px;margin-top:18px;max-width:84ch}
+.uth-stack{display:flex;flex-wrap:wrap;gap:6px}
+.uth-stack span{font-family:var(--f-mono);font-size:12px;border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--ink)}
+.dk .uth-stack span{border-color:var(--line-d);color:var(--paper)}
+.uth ul{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.uth li{position:relative;padding-left:20px;color:var(--mute);font-size:16px;line-height:1.55}
+.dk .uth li{color:var(--mute-d)}
+.uth li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;border:1px solid currentColor}
+.uth li b{font-weight:500;color:var(--ink)}
+.dk .uth li b{color:var(--paper)}
+.uth code{font-family:var(--f-mono);font-size:.88em}
+.uth-sub{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute-d);margin-top:4px}
+.uth-ds li::before{display:none}
+.uth ul.uth-ds{gap:6px}
+.uth ul.uth-ds li{padding-left:0;font-size:14px}
+
 /* mobile story: stage hidden, each beat carries its own screen */
 @media(max-width:900px){
   .cine{grid-template-columns:minmax(0,1fr)}
@@ -397,6 +421,19 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
         <span class="zoom-hint">Click a screenshot to enlarge</span>
       </div>
     </div>
+    <details class="uth">
+      <summary>Under the hood · built in 2 days</summary>
+      <div class="uth-body">
+        <div class="uth-stack"><span>React</span><span>TypeScript</span><span>Supabase (Postgres)</span><span>Row-level security</span><span>GitHub</span><span>Lovable</span><span>Claude</span></div>
+        <ul>
+          <li><b>Data model.</b> 21 tables for company details, pricing per airport and geozone, surcharges, daily and hourly capacity, buffer times, booking windows, meeting points, vehicles and compliance documents.</li>
+          <li><b>Geozones from the source.</b> Zones for about 1,000 hubs are read straight from the data team’s GitHub repository, so pricing always uses the current zone definitions.</li>
+          <li><b>Access and security.</b> Partners work through a personal, copyable link without an account, and confirmation emails go out from our own domain. The team signs in through the company’s two-factor login. 101 row-level security policies decide who can read or change what.</li>
+          <li><b>Funnel analytics.</b> Every step is logged as an event, which shows time per step and where partners drop off.</li>
+          <li><b>In production.</b> Now connected to the Transferz API.</li>
+        </ul>
+      </div>
+    </details>
     <p class="claim">A simpler process first, then a tool that scales with it.</p>
   </div>
 </section>
@@ -449,9 +486,19 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
         <div role="listitem"><span class="n">6</span><span class="c">public datasets connected</span></div>
       </div>
     </div>
-    <details class="srcd">
-      <summary>The six datasets</summary>
-      <ul>
+    <details class="uth">
+      <summary>Under the hood · built in 3 hours</summary>
+      <div class="uth-body">
+        <div class="uth-stack"><span>TanStack Start</span><span>React</span><span>TypeScript</span><span>NYC Open Data (Socrata) APIs</span><span>Leaflet</span></div>
+        <ul>
+          <li><b>6 live APIs, no database.</b> Every view reads straight from NYC Open Data, so the data is never stale.</li>
+          <li><b>Aggregation at the source.</b> Totals are computed by the API with SoQL (<code>$select</code>, <code>$group</code>, <code>$where</code>), so the tool never downloads raw trips. Those datasets hold 100–200 million rows a year.</li>
+          <li><b>Capability probing.</b> Before querying, it checks which fields each dataset actually publishes, and falls back to trip counts where fields are missing.</li>
+          <li><b>Caching per dataset.</b> Licences refresh every 5 minutes, pricing aggregates monthly.</li>
+          <li><b>Matching and scoring.</b> Bases are joined with the Vision Zero report on licence number, then scored: fleet + 2 × renewals within 90 days + 10 for black car or luxury.</li>
+        </ul>
+        <p class="uth-sub">The six datasets</p>
+        <ul class="uth-ds">
         <li>Active TLC licensees · <code>xjfq-wh2d</code></li>
         <li>Licensed for-hire bases · <code>eccv-9dzr</code></li>
         <li>Active for-hire vehicles · <code>8wbx-tsch</code></li>
@@ -459,6 +506,7 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
         <li>NYC taxi zones · <code>8meu-9t5y</code></li>
         <li>High-volume for-hire trips 2022 and 2023 · <code>g6pj-fsah</code>, <code>u253-aew4</code></li>
       </ul>
+      </div>
     </details>
     <p class="claim">Scattered public data, brought together in one sourcing tool.</p>
 
@@ -492,6 +540,19 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
         <span class="zoom-hint">Click a screenshot to enlarge</span>
       </div>
     </div>
+    <details class="uth">
+      <summary>Under the hood · built in 8 days, mostly optimising</summary>
+      <div class="uth-body">
+        <div class="uth-stack"><span>Supabase Edge Functions (Deno)</span><span>Postgres</span><span>pg_cron</span><span>Firecrawl</span><span>Open-Meteo</span><span>Google Ads Transparency Center</span><span>Gemini 2.5 Flash</span></div>
+        <ul>
+          <li><b>Hybrid scraping.</b> Where a booking platform exposes a JSON API, the scraper calls it directly. For JavaScript-heavy pages, Firecrawl runs a headless browser with scripted clicks and returns markdown to parse.</li>
+          <li><b>Schedule.</b> Up to 96 scrapes a day per location with pg_cron, plus nightly runs that look 30 days ahead.</li>
+          <li><b>Bookings from diffs.</b> Consecutive snapshots are compared against each location’s capacity, and every spot that disappears becomes a timestamped booking.</li>
+          <li><b>Scraper health.</b> Every response gets a structural fingerprint (page skeleton or JSON key tree). When a site changes its URL, layout or booking tool, or starts blocking requests, an alert fires instead of bad data slipping in. Expired tokens are refreshed and retried automatically.</li>
+          <li><b>Open data.</b> Weather from Open-Meteo (forecast and history) for demand correlation, competitor ads from Google’s Ads Transparency Center, and a weekly summary written by an AI model.</li>
+        </ul>
+      </div>
+    </details>
     <p class="claim">Public booking availability, turned into a clear picture of demand.</p>
   </div>
 </section>
