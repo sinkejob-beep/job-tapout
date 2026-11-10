@@ -428,7 +428,7 @@ details.uth[open] summary::before{content:"−"}
         <ul>
           <li><b>Data model.</b> 21 tables for company details, pricing per airport and geozone, surcharges, daily and hourly capacity, buffer times, booking windows, meeting points, vehicles and compliance documents.</li>
           <li><b>Geozones from the source.</b> Zones for about 1,000 hubs are read straight from the data team’s GitHub repository, so pricing always uses the current zone definitions.</li>
-          <li><b>Access and security.</b> Partners work through a personal, copyable link without an account, and confirmation emails go out from our own domain. The team signs in through the company’s two-factor login. 101 row-level security policies decide who can read or change what.</li>
+          <li><b>Access and security.</b> Partners work through a personal, copyable link without an account, and confirmation emails go out from our own domain. The team signs in through the company’s two-factor login. Around 100 row-level security policies decide who can read or change what.</li>
           <li><b>Funnel analytics.</b> Every step is logged as an event, which shows time per step and where partners drop off.</li>
           <li><b>In production.</b> Now connected to the Transferz API.</li>
         </ul>
@@ -546,7 +546,7 @@ details.uth[open] summary::before{content:"−"}
         <div class="uth-stack"><span>Supabase Edge Functions (Deno)</span><span>Postgres</span><span>pg_cron</span><span>Firecrawl</span><span>Open-Meteo</span><span>Google Ads Transparency Center</span><span>Gemini 2.5 Flash</span></div>
         <ul>
           <li><b>Hybrid scraping.</b> Where a booking platform exposes a JSON API, the scraper calls it directly. For JavaScript-heavy pages, Firecrawl runs a headless browser with scripted clicks and returns markdown to parse.</li>
-          <li><b>Schedule.</b> Up to 96 scrapes a day per location with pg_cron, plus nightly runs that look 30 days ahead.</li>
+          <li><b>Schedule.</b> Up to 96 scrapes a day per location with pg_cron, plus look-ahead runs up to 30 days out.</li>
           <li><b>Bookings from diffs.</b> Consecutive snapshots are compared against each location’s capacity, and every spot that disappears becomes a timestamped booking.</li>
           <li><b>Scraper health.</b> Every response gets a structural fingerprint (page skeleton or JSON key tree). When a site changes its URL, layout or booking tool, or starts blocking requests, an alert fires instead of bad data slipping in. Expired tokens are refreshed and retried automatically.</li>
           <li><b>Open data.</b> Weather from Open-Meteo (forecast and history) for demand correlation, competitor ads from Google’s Ads Transparency Center, and a weekly summary written by an AI model.</li>
