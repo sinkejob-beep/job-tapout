@@ -317,6 +317,32 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
 .dk .psr>div:last-child p{color:var(--paper)}
 @media(max-width:820px){.psr{grid-template-columns:minmax(0,1fr)}.psr>div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}.dk .psr>div+div{border-top-color:var(--line-d)}}
 
+/* slider: screenshots slide sideways, explanation underneath */
+.slider{display:grid;gap:18px;margin-top:clamp(20px,3vw,32px)}
+.sl-track{display:grid;grid-auto-flow:column;grid-auto-columns:max-content;gap:clamp(16px,2.4vw,32px);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none;padding-bottom:4px;outline:none}
+.sl-track::-webkit-scrollbar{display:none}
+.sl-track:focus-visible{outline:2px solid var(--blue);outline-offset:6px;border-radius:8px}
+.sl-slide{margin:0;scroll-snap-align:start;display:grid;gap:18px;align-content:start;min-width:0}
+.sl-img{display:flex;align-items:flex-start}
+.sl-img img{display:block;height:min(56vh,560px);width:auto;max-width:min(1100px,82vw);object-fit:contain;object-position:left top;border-radius:10px;border:1px solid var(--line);background:#fff;box-shadow:0 1px 2px rgba(20,20,18,.06),0 18px 40px -30px rgba(20,20,18,.35);cursor:zoom-in}
+.dk .sl-img img{border-color:var(--line-d);box-shadow:none}
+.sl-slide figcaption{display:grid;gap:8px;width:0;min-width:100%;max-width:64ch}
+.sl-slide figcaption h3{font-size:clamp(26px,2.6vw,34px)}
+.sl-slide .step{font-family:var(--f-mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--mute)}
+.dk .sl-slide .step{color:var(--mute-d)}
+.sl-cap{font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;color:var(--mute);margin-top:4px}
+.dk .sl-cap{color:var(--mute-d)}
+.sl-nav{display:flex;flex-wrap:wrap;align-items:center;gap:12px 14px}
+.sl-btn{width:42px;height:42px;border-radius:50%;border:1px solid currentColor;background:transparent;color:inherit;font:400 18px/1 var(--f-body);cursor:pointer;display:grid;place-items:center;padding:0}
+.sl-btn:disabled{opacity:.3;cursor:default}
+.sl-btn:not(:disabled):hover{background:var(--ink);color:var(--paper)}
+.dk .sl-btn:not(:disabled):hover{background:var(--paper);color:var(--ink)}
+.sl-count{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;min-width:3.5em;text-align:center;font-variant-numeric:tabular-nums}
+.sl-dots{display:flex;gap:6px;margin-right:auto}
+.sl-dot{width:8px;height:8px;border-radius:50%;border:1px solid currentColor;background:transparent;padding:0;cursor:pointer;opacity:.5}
+.sl-dot[aria-current="true"]{background:currentColor;opacity:1}
+@media(max-width:700px){.sl-track{grid-auto-columns:88%}.sl-img img{height:auto;width:100%;max-width:100%}.sl-slide figcaption{width:auto;min-width:0}.sl-nav .zoom-hint{display:none}}
+
 /* mobile story: stage hidden, each beat carries its own screen */
 @media(max-width:900px){
   .cine{grid-template-columns:minmax(0,1fr)}
@@ -369,39 +395,48 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
       <h2>From dozens of forms to one onboarding engine.</h2>
       <div class="psr"><div><span class="lbl">Problem</span><p>Onboarding a supplier meant dozens of separate Microsoft Forms, answers scattered across emails and spreadsheets, and manual follow-ups. On average around 3 new suppliers a year per supply team member, because the process was so fragmented.</p></div><div><span class="lbl">How I solved it</span><p>I simplified the journey first, then built one self-service platform: 13 steps in six phases, from company setup and airport pricing to contract signing, with a live dashboard for the team.</p></div><div><span class="lbl">Result</span><p>10 companies in 5 weeks, adopted by a team of 20, and now in production connected to the Transferz API.</p></div></div>
     </div>
-    <div class="cine" data-cine>
-      <div class="beats">
-        <div class="beat on" data-shot="0">
-          <span class="step">Before · a 2010 onboarding</span>
-          <h3>Onboarding meant chasing information.</h3>
-        </div>
-        <div class="beat" data-shot="1">
-          <span class="step">After · a 2026 onboarding</span>
-          <h3>One platform for the whole process.</h3>
-          <p class="txt">Simplify first, then automate: one journey instead of dozens of forms.</p>
-        </div>
-        <div class="beat" data-shot="2">
-          <span class="step">After</span>
-          <p class="txt">Partners manage their own onboarding. Our team sees every supplier, status and outstanding action in one live dashboard.</p>
-        </div>
-        <div class="beat" data-shot="3">
-          <span class="step">The result</span>
-          <h3>10 companies in 5 weeks, leading to full adoption by a team of 20.</h3>
-          <ul class="blt">
-            <li>2 a week, against about 0.06 a week (around 3 a year) per supply team member before.</li>
-            <li>Presented to 60 colleagues.</li>
-            <li>Now in full engineering production.</li>
-          </ul>
-        </div>
+    <div class="slider" data-slider>
+      <div class="sl-track" tabindex="0" aria-label="Screenshots, use the arrow keys to move between slides">
+        <figure class="sl-slide">
+          <div class="sl-img"><img src="shots/onb_form.webp" alt="Old Microsoft Forms onboarding questionnaire"></div>
+          <figcaption>
+            <span class="step">Before · a 2010 onboarding</span>
+            <h3>Onboarding meant chasing information.</h3>
+            <span class="sl-cap">Onboarding in 2010 style · one Microsoft Form per topic · partner details blurred</span>
+          </figcaption>
+        </figure>
+        <figure class="sl-slide">
+          <div class="sl-img"><img src="shots/onb_wizard.webp" alt="Onboarding platform at step 12 of 13 with six phases and a supplier agreement to sign"></div>
+          <figcaption>
+            <span class="step">After · a 2026 onboarding</span>
+            <h3>One platform for the whole process.</h3>
+            <p class="txt">Simplify first, then automate: one journey instead of dozens of forms.</p>
+            <span class="sl-cap">Partner view · step 12 of 13, signing the supplier agreement · partner name blurred</span>
+          </figcaption>
+        </figure>
+        <figure class="sl-slide">
+          <div class="sl-img"><img src="shots/onb_list.webp" alt="Onboarding dashboard listing suppliers with status and airports"></div>
+          <figcaption>
+            <span class="step">After</span>
+            <p class="txt">Partners manage their own onboarding. Our team sees every supplier, status and outstanding action in one live dashboard.</p>
+            <span class="sl-cap">Team view · every supplier, status and action in one live dashboard · names blurred</span>
+          </figcaption>
+        </figure>
+        <figure class="sl-slide">
+          <div class="sl-img"><img src="shots/onb_timeline.webp" alt="Timeline of supplier onboardings, most at 100 percent"></div>
+          <figcaption>
+            <span class="step">The result</span>
+            <h3>10 companies in 5 weeks, leading to full adoption by a team of 20.</h3>
+            <ul class="blt"> <li>2 a week, against about 0.06 a week (around 3 a year) per supply team member before.</li> <li>Presented to 60 colleagues.</li> <li>Now in full engineering production.</li> </ul>
+            <span class="sl-cap">Timeline · progress per supplier by week, March to August 2026 · names blurred</span>
+          </figcaption>
+        </figure>
       </div>
-      <div class="stage">
-        <div class="scr">
-          <div class="shot on" data-cap="Onboarding in 2010 style · one Microsoft Form per topic · partner details blurred"><img src="shots/onb_form.webp" alt="Old Microsoft Forms onboarding questionnaire"></div>
-          <div class="shot" data-cap="Partner view · step 12 of 13, signing the supplier agreement · partner name blurred"><img src="shots/onb_wizard.webp" alt="Onboarding platform at step 12 of 13 with six phases and a supplier agreement to sign"></div>
-          <div class="shot" data-cap="Team view · every supplier, status and action in one live dashboard · names blurred"><img src="shots/onb_list.webp" alt="Onboarding dashboard listing suppliers with status and airports"></div>
-          <div class="shot" data-cap="Timeline · progress per supplier by week, March to August 2026 · names blurred"><img src="shots/onb_timeline.webp" alt="Timeline of supplier onboardings, most at 100 percent"></div>
-        </div>
-        <p class="cap"></p>
+      <div class="sl-nav">
+        <button type="button" class="sl-btn sl-prev" aria-label="Previous slide">←</button>
+        <span class="sl-count">1 / 4</span>
+        <button type="button" class="sl-btn sl-next" aria-label="Next slide">→</button>
+        <div class="sl-dots"><button type="button" class="sl-dot" aria-label="Go to slide 1"></button><button type="button" class="sl-dot" aria-label="Go to slide 2"></button><button type="button" class="sl-dot" aria-label="Go to slide 3"></button><button type="button" class="sl-dot" aria-label="Go to slide 4"></button></div>
         <span class="zoom-hint">Click a screenshot to enlarge</span>
       </div>
     </div>
@@ -426,19 +461,41 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
       <div class="psr"><div><span class="lbl">Problem</span><p>We needed more supply in New York, but finding compliant transport companies meant searching several public databases by hand.</p></div><div><span class="lbl">How I solved it</span><p>I connected six NYC Open Data APIs into one tool: live licence checks, licensed bases matched to contact details, and companies ranked by fleet size, upcoming licence renewals and service type.</p></div><div><span class="lbl">Result</span><p>94 new taxi companies onboarded this year, against 55 in 2025 and 40 in 2024.</p></div></div>
     </div>
     <span class="lbl sub-l">What it delivers</span>
-    <div class="cine" data-cine>
-      <div class="beats">
-        <div class="beat on" data-shot="0"><span class="step">01 · Verify</span><h3>Check compliance.</h3><p class="txt">Live checks of driver and vehicle licences. Know who's compliant before approaching a partner.</p></div>
-        <div class="beat" data-shot="1"><span class="step">02 · Discover</span><h3>Find contact details.</h3><p class="txt">Match licensed transport bases with contact details, websites and booking channels.</p></div>
-        <div class="beat" data-shot="2"><span class="step">03 · Prioritise</span><h3>Prioritise.</h3><p class="txt">Rank companies by fleet size, upcoming licence renewals and service type. Identify the best commercial opportunities first.</p></div>
+    <div class="slider" data-slider>
+      <div class="sl-track" tabindex="0" aria-label="Screenshots, use the arrow keys to move between slides">
+        <figure class="sl-slide">
+          <div class="sl-img"><img src="shots/licensees.webp" alt="Live dashboard of 180,473 active NYC licence records"></div>
+          <figcaption>
+            <span class="step">01 · Verify</span>
+            <h3>Check compliance.</h3>
+            <p class="txt">Live checks of driver and vehicle licences. Know who's compliant before approaching a partner.</p>
+            <span class="sl-cap">Live licence dashboard · NYC Open Data · driver names blurred</span>
+          </figcaption>
+        </figure>
+        <figure class="sl-slide">
+          <div class="sl-img"><img src="shots/bases.webp" alt="Licensed bases matched with sector and contact columns"></div>
+          <figcaption>
+            <span class="step">02 · Discover</span>
+            <h3>Find contact details.</h3>
+            <p class="txt">Match licensed transport bases with contact details, websites and booking channels.</p>
+            <span class="sl-cap">Enriched supplier database · contact details blurred</span>
+          </figcaption>
+        </figure>
+        <figure class="sl-slide">
+          <div class="sl-img"><img src="shots/zones.webp" alt="Map of the 263 NYC taxi zones"></div>
+          <figcaption>
+            <span class="step">03 · Prioritise</span>
+            <h3>Prioritise.</h3>
+            <p class="txt">Rank companies by fleet size, upcoming licence renewals and service type. Identify the best commercial opportunities first.</p>
+            <span class="sl-cap">NYC map · 263 taxi zones, airports highlighted</span>
+          </figcaption>
+        </figure>
       </div>
-      <div class="stage">
-        <div class="scr">
-          <div class="shot on" data-cap="Live licence dashboard · NYC Open Data · driver names blurred"><img src="shots/licensees.webp" alt="Live dashboard of 180,473 active NYC licence records"></div>
-          <div class="shot" data-cap="Enriched supplier database · contact details blurred"><img src="shots/bases.webp" alt="Licensed bases matched with sector and contact columns"></div>
-          <div class="shot" data-cap="NYC map · 263 taxi zones, airports highlighted"><img src="shots/zones.webp" alt="Map of the 263 NYC taxi zones"></div>
-        </div>
-        <p class="cap"></p>
+      <div class="sl-nav">
+        <button type="button" class="sl-btn sl-prev" aria-label="Previous slide">←</button>
+        <span class="sl-count">1 / 3</span>
+        <button type="button" class="sl-btn sl-next" aria-label="Next slide">→</button>
+        <div class="sl-dots"><button type="button" class="sl-dot" aria-label="Go to slide 1"></button><button type="button" class="sl-dot" aria-label="Go to slide 2"></button><button type="button" class="sl-dot" aria-label="Go to slide 3"></button></div>
         <span class="zoom-hint">Click a screenshot to enlarge</span>
       </div>
     </div>
@@ -462,19 +519,41 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
       <div class="psr"><div><span class="lbl">Problem</span><p>Booking availability in the wellness market is public, but booking behaviour isn’t. Nobody publishes how these businesses actually fill up.</p></div><div><span class="lbl">How I solved it</span><p>Two routes. Where a booking platform has a REST API, my scrapers call it directly and read clean JSON. Where it doesn’t, Firecrawl opens the page in a headless browser, clicks through dates and sessions with scripted actions, and returns the page as markdown to parse. Up to 96 checks a day across 20+ locations; every slot that disappears becomes a timestamped booking.</p></div><div><span class="lbl">Result</span><p>A dataset of real demand: peak hours, sell-out rates, how far ahead people book and how weather shifts demand.</p></div></div>
     </div>
     <span class="lbl sub-l">What it delivers</span>
-    <div class="cine" data-cine>
-      <div class="beats">
-        <div class="beat on" data-shot="0"><span class="step">01 · Collect</span><h3>Collect availability.</h3><p class="txt">Automated scrapers monitor 20+ locations, checking available time slots up to 96 times a day.</p></div>
-        <div class="beat" data-shot="1"><span class="step">02 · Understand</span><h3>Turn changes into bookings.</h3><p class="txt">Every disappearing slot becomes a booking with a timestamp and estimated booking lead time.</p></div>
-        <div class="beat" data-shot="2"><span class="step">03 · Predict &amp; optimise</span><h3>Spot patterns.</h3><p class="txt">Track peak hours, sell-out rates, booking patterns, seasonality and weather correlations. AI generates weekly market insights.</p></div>
+    <div class="slider" data-slider>
+      <div class="sl-track" tabindex="0" aria-label="Screenshots, use the arrow keys to move between slides">
+        <figure class="sl-slide">
+          <div class="sl-img"><img src="shots/mkt_schedule.webp" alt="Scrape schedule grid with time slots per day"></div>
+          <figcaption>
+            <span class="step">01 · Collect</span>
+            <h3>Collect availability.</h3>
+            <p class="txt">Automated scrapers monitor 20+ locations, checking available time slots up to 96 times a day.</p>
+            <span class="sl-cap">Automated scraping schedule · names blurred</span>
+          </figcaption>
+        </figure>
+        <figure class="sl-slide">
+          <div class="sl-img"><img src="shots/mkt_leadtime.webp" alt="Bar chart of booking lead times with a per-location table"></div>
+          <figcaption>
+            <span class="step">02 · Understand</span>
+            <h3>Turn changes into bookings.</h3>
+            <p class="txt">Every disappearing slot becomes a booking with a timestamp and estimated booking lead time.</p>
+            <span class="sl-cap">Booking lead-time chart · last 30 days · names blurred</span>
+          </figcaption>
+        </figure>
+        <figure class="sl-slide">
+          <div class="sl-img"><img src="shots/mkt_trends.webp" alt="Bookings per time slot and per week"></div>
+          <figcaption>
+            <span class="step">03 · Predict &amp; optimise</span>
+            <h3>Spot patterns.</h3>
+            <p class="txt">Track peak hours, sell-out rates, booking patterns, seasonality and weather correlations. AI generates weekly market insights.</p>
+            <span class="sl-cap">Demand analytics · bookings per slot and per week · names blurred</span>
+          </figcaption>
+        </figure>
       </div>
-      <div class="stage">
-        <div class="scr">
-          <div class="shot on" data-cap="Automated scraping schedule · names blurred"><img src="shots/mkt_schedule.webp" alt="Scrape schedule grid with time slots per day"></div>
-          <div class="shot" data-cap="Booking lead-time chart · last 30 days · names blurred"><img src="shots/mkt_leadtime.webp" alt="Bar chart of booking lead times with a per-location table"></div>
-          <div class="shot" data-cap="Demand analytics · bookings per slot and per week · names blurred"><img src="shots/mkt_trends.webp" alt="Bookings per time slot and per week"></div>
-        </div>
-        <p class="cap"></p>
+      <div class="sl-nav">
+        <button type="button" class="sl-btn sl-prev" aria-label="Previous slide">←</button>
+        <span class="sl-count">1 / 3</span>
+        <button type="button" class="sl-btn sl-next" aria-label="Next slide">→</button>
+        <div class="sl-dots"><button type="button" class="sl-dot" aria-label="Go to slide 1"></button><button type="button" class="sl-dot" aria-label="Go to slide 2"></button><button type="button" class="sl-dot" aria-label="Go to slide 3"></button></div>
         <span class="zoom-hint">Click a screenshot to enlarge</span>
       </div>
     </div>
@@ -657,11 +736,29 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
     disc.setAttribute('aria-label','Tap the stone to tap out'); clearInterval(iv);
   });
 
+  // sliders
+  document.querySelectorAll('[data-slider]').forEach(function(sl){
+    var track=sl.querySelector('.sl-track'), slides=[].slice.call(sl.querySelectorAll('.sl-slide'));
+    var prev=sl.querySelector('.sl-prev'), next=sl.querySelector('.sl-next'), count=sl.querySelector('.sl-count'), dots=[].slice.call(sl.querySelectorAll('.sl-dot'));
+    function step(){ return slides.length>1 ? slides[1].offsetLeft-slides[0].offsetLeft : track.clientWidth; }
+    function idx(){ var i=Math.round(track.scrollLeft/step()); if(track.scrollLeft+track.clientWidth>=track.scrollWidth-4) i=slides.length-1; return Math.max(0,Math.min(slides.length-1,i)); }
+    function go(i){ i=Math.max(0,Math.min(slides.length-1,i)); track.scrollTo({left:slides[i].offsetLeft-slides[0].offsetLeft}); }
+    function sync(){ var i=idx(); count.textContent=(i+1)+' / '+slides.length; prev.disabled=i===0; next.disabled=i===slides.length-1; dots.forEach(function(d,k){d.setAttribute('aria-current',k===i?'true':'false');}); }
+    prev.addEventListener('click',function(){go(idx()-1);});
+    next.addEventListener('click',function(){go(idx()+1);});
+    dots.forEach(function(d,k){d.addEventListener('click',function(){go(k);});});
+    track.addEventListener('keydown',function(e){ if(e.key==='ArrowRight'){e.preventDefault();go(idx()+1);} if(e.key==='ArrowLeft'){e.preventDefault();go(idx()-1);} });
+    var t=0; track.addEventListener('scroll',function(){ if(!t) t=requestAnimationFrame(function(){t=0;sync();}); },{passive:true});
+    window.addEventListener('resize',sync); window.addEventListener('load',sync);
+    sl.querySelectorAll('img').forEach(function(im){ if(!im.complete) im.addEventListener('load',sync); });
+    sync();
+  });
+
   // enlarge screenshots
   var lb=document.getElementById('lb'), lbimg=document.getElementById('lbimg');
   function closeLb(){lb.hidden=true;lbimg.removeAttribute('src');document.documentElement.style.overflow='';}
   document.addEventListener('click',function(e){
-    var im=e.target.closest&&e.target.closest('.shot img');
+    var im=e.target.closest&&e.target.closest('.shot img, .sl-img img');
     if(im){lbimg.src=im.currentSrc||im.src;lbimg.alt=im.alt;lb.hidden=false;lb.scrollTop=0;document.documentElement.style.overflow='hidden';return;}
     if(!lb.hidden&&(e.target===lb||e.target===lbimg||e.target.id==='lbx')) closeLb();
   });
