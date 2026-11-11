@@ -97,9 +97,9 @@ em.i{font-family:var(--f-serif);font-style:italic;font-size:1em;letter-spacing:-
 /* laptop scroll story */
 .cine{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:clamp(28px,5vw,72px);align-items:start}
 .beats{display:grid}
-.beat{min-height:72vh;display:grid;align-content:center;gap:14px;padding-block:24px;opacity:.38;transition:opacity .45s}
+.beat{min-height:54vh;display:grid;align-content:center;gap:14px;padding-block:24px;opacity:.38;transition:opacity .45s}
 .beat.on{opacity:1}
-.beat:first-child{min-height:56vh;align-content:start;padding-top:8vh}
+.beat:first-child{min-height:46vh;align-content:start;padding-top:4vh}
 .beat .step{font-family:var(--f-mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--mute)}
 .dk .beat .step{color:var(--mute-d)}
 .beat h3{font-size:clamp(28px,3vw,38px)}
@@ -374,14 +374,11 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
         <div class="beat on" data-shot="0">
           <span class="step">Before · a 2010 onboarding</span>
           <h3>Onboarding meant chasing information.</h3>
-          <p class="txt">Separate Microsoft Forms for company details, pricing, vehicles and documents. Answers scattered across emails and spreadsheets. Manual follow-ups to fill the gaps.</p>
-          <p class="txt">On average, around 3 new suppliers a year per supply team member.</p>
         </div>
         <div class="beat" data-shot="1">
           <span class="step">After · a 2026 onboarding</span>
           <h3>One platform for the whole process.</h3>
-          <p class="txt">I simplified first, then automated: one journey instead of dozens of forms.</p>
-          <p class="txt">I redesigned the entire onboarding journey into one self-service platform: 13 steps across six phases, from company setup and airport pricing to operational requirements, documentation and contract signing.</p>
+          <p class="txt">Simplify first, then automate: one journey instead of dozens of forms.</p>
         </div>
         <div class="beat" data-shot="2">
           <span class="step">After</span>
@@ -392,7 +389,6 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
           <h3>10 companies in 5 weeks, leading to full adoption by a team of 20.</h3>
           <ul class="blt">
             <li>2 a week, against about 0.06 a week (around 3 a year) per supply team member before.</li>
-            <li>One platform used by a team of 20.</li>
             <li>Presented to 60 colleagues.</li>
             <li>Now in full engineering production.</li>
           </ul>
@@ -409,7 +405,6 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
         <span class="zoom-hint">Click a screenshot to enlarge</span>
       </div>
     </div>
-    <p class="claim">A simpler process first, then a tool that scales with it.</p>
   </div>
 </section>
 
@@ -422,19 +417,13 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
       <h2>Two problems I noticed, and the tools I built to solve them.</h2>
     </div>
     <div class="intro2">
-      <p class="lead2">A few examples of what I’ve built.</p>
-      <p class="txt">I enjoy combining creativity, business understanding and AI to turn ideas into working solutions. These are just a few of the projects I’ve worked on, ranging from internal business tools to independent experiments.</p>
+      <p class="lead2">A few examples of what I’ve built, from internal business tools to independent experiments.</p>
     </div>
 
     <div class="case">
       <span class="lbl">Case A · New York sourcing</span>
       <h3>Using public data to find new suppliers in New York.</h3>
       <div class="psr"><div><span class="lbl">Problem</span><p>We needed more supply in New York, but finding compliant transport companies meant searching several public databases by hand.</p></div><div><span class="lbl">How I solved it</span><p>I connected six NYC Open Data APIs into one tool: live licence checks, licensed bases matched to contact details, and companies ranked by fleet size, upcoming licence renewals and service type.</p></div><div><span class="lbl">Result</span><p>94 new taxi companies onboarded this year, against 55 in 2025 and 40 in 2024.</p></div></div>
-      <div class="wtxt">
-        <p class="txt">We needed to grow our New York supply. But finding reliable transport companies meant manually searching multiple public databases, checking licences and hunting for contact details.</p>
-        <p class="txt">The information was there. Nobody had connected it. So I did.</p>
-        <p class="txt">I combined six NYC public datasets into one sourcing intelligence platform.</p>
-      </div>
     </div>
     <span class="lbl sub-l">What it delivers</span>
     <div class="cine" data-cine>
@@ -453,15 +442,6 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
         <span class="zoom-hint">Click a screenshot to enlarge</span>
       </div>
     </div>
-    <div class="nums">
-      <span class="lbl">The numbers</span>
-      <div class="kp k4" role="list">
-        <div role="listitem"><span class="n">94</span><span class="c">new taxi companies onboarded this year through the tool (55 in 2025, 40 in 2024)</span></div>
-        <div role="listitem"><span class="n">180,473</span><span class="c">active licence records</span></div>
-        <div role="listitem"><span class="n">309</span><span class="c">enriched company profiles</span></div>
-        <div role="listitem"><span class="n">6</span><span class="c">public datasets connected</span></div>
-      </div>
-    </div>
     <details class="srcd">
       <summary>The six datasets</summary>
       <ul>
@@ -473,7 +453,6 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
         <li>High-volume for-hire trips 2022 and 2023 · <code>g6pj-fsah</code>, <code>u253-aew4</code></li>
       </ul>
     </details>
-    <p class="claim">Scattered public data, brought together in one sourcing tool.</p>
 
     <div style="height:clamp(80px,11vw,140px)"></div>
 
@@ -481,13 +460,6 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
       <span class="lbl">Case B · Personal project · Market intelligence</span>
       <h3>Understanding demand in the wellness market.</h3>
       <div class="psr"><div><span class="lbl">Problem</span><p>Booking availability in the wellness market is public, but booking behaviour isn’t. Nobody publishes how these businesses actually fill up.</p></div><div><span class="lbl">How I solved it</span><p>Two routes. Where a booking platform has a REST API, my scrapers call it directly and read clean JSON. Where it doesn’t, Firecrawl opens the page in a headless browser, clicks through dates and sessions with scripted actions, and returns the page as markdown to parse. Up to 96 checks a day across 20+ locations; every slot that disappears becomes a timestamped booking.</p></div><div><span class="lbl">Result</span><p>A dataset of real demand: peak hours, sell-out rates, how far ahead people book and how weather shifts demand.</p></div></div>
-      <div class="wtxt">
-        <p class="txt">A personal project, for practice and out of curiosity. I like to understand how markets really work, and I always start with data combined with commercial gut feeling.</p>
-        <p class="txt">So I built competitive intelligence on the whole wellness market, to understand how wellness businesses actually fill up.</p>
-        <p class="txt">Which slots sell out? When do customers book? How far ahead do they plan? What impact does weather have on demand?</p>
-        <p class="txt">Booking availability is public. Actual booking behaviour isn't.</p>
-        <p class="txt">So I built a system that monitors public booking pages throughout the day and detects when availability disappears. Each change becomes a booking record, creating a dataset that reveals real demand patterns.</p>
-      </div>
     </div>
     <span class="lbl sub-l">What it delivers</span>
     <div class="cine" data-cine>
@@ -506,7 +478,6 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
         <span class="zoom-hint">Click a screenshot to enlarge</span>
       </div>
     </div>
-    <p class="claim">Public booking availability, turned into a clear picture of demand.</p>
   </div>
 </section>
 
@@ -529,28 +500,22 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
       <div>
         <h3>Why this</h3>
         <div class="wtxt">
-          <p class="txt">I’ve always been drawn to the intersection of strategy and execution. I enjoy understanding how a business works, spotting opportunities and turning them into tangible improvements.</p>
-          <p class="txt">At Bolt and Transferz, I’ve worked across commercial strategy, international operations, partnerships and automation. I’ve realised that I get the most energy from taking ownership and building things that make a measurable difference.</p>
-          <p class="txt">Now I want to bring that experience closer to the founders, have a broader impact and deepen my experience in e-commerce and scaling B2C businesses.</p>
+          <p class="txt">I’ve always been drawn to where strategy meets execution: understanding how a business works, spotting opportunities and turning them into tangible improvements.</p>
+          <p class="txt">Now I want to do that closer to the founders, with a broader impact, and learn e-commerce and scaling B2C businesses inside out.</p>
         </div>
       </div>
       <div>
         <h3>Why now</h3>
         <div class="wtxt">
-          <p class="txt">AI has fundamentally changed what’s possible for small teams.</p>
-          <p class="txt">I can now go from identifying a problem to building a working solution in days, without a development team or lengthy roadmap. I want to be at the forefront of this shift.</p>
-          <p class="txt">I believe the next generation of companies will need high-agency operators who think independently, combine creativity with technology and get things done.</p>
-          <p class="txt">With Tap Out growing rapidly, this is the moment to build the operational foundations for its next stage.</p>
+          <p class="txt">AI has changed what’s possible for small teams. I can go from a problem to a working solution in days, without a development team.</p>
+          <p class="txt">With Tap Out growing fast, this is the moment to build the operational foundations for the next stage.</p>
         </div>
       </div>
       <div>
         <h3>Why Tap Out</h3>
         <div class="wtxt">
-          <p class="txt">I genuinely believe in the mission, because I see how screen time affects my relationships, my creativity and my productivity. And I believe demand for physical tools like this will keep growing: you don’t want another app to fix an app problem.</p>
-          <p class="txt">But I also see an exciting business to build. With 40,000+ paying customers and proven product-market fit in the Netherlands, the opportunity is to scale across Europe while keeping operations lean and efficient.</p>
-          <p class="txt">That’s exactly the kind of challenge I enjoy: improving supply chains, optimising inventory, strengthening fulfilment and using AI to automate repetitive work, so a team of five can outwork a team of fifty.</p>
-          <p class="txt">Support is part of that. At Bolt I managed support staff, and at Transferz I work closely with our support agents in Bangkok and Córdoba.</p>
-          <p class="txt">I bring operational experience, commercial thinking and a builder’s mindset. In return, I see an opportunity to learn from ambitious founders and help build a European B2C business from the inside.</p>
+          <p class="txt">I believe in the mission, because I see how screen time affects my relationships, my creativity and my productivity. And demand for physical tools like this will keep growing: you don’t want another app to fix an app problem.</p>
+          <p class="txt">With 40,000+ paying customers and product-market fit in the Netherlands, the challenge is scaling across Europe while keeping supply chain, fulfilment and support lean, so a team of five can outwork a team of fifty. At Bolt I managed support staff; at Transferz I work closely with our support agents in Bangkok and Córdoba.</p>
           <p class="txt">You focus on building and selling the product. I’ll make sure the operation can keep up.</p>
         </div>
       </div>
