@@ -306,6 +306,17 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
 .why .wtxt{gap:16px}
 .why .txt{max-width:38ch}
 
+/* problem, how, result */
+.psr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);margin-top:8px}
+.psr>div{display:grid;gap:8px;align-content:start;padding:18px 22px 6px 0;min-width:0}
+.psr>div+div{padding-left:22px;border-left:1px solid var(--line)}
+.psr p{font-size:16px;line-height:1.55;color:var(--mute)}
+.psr>div:last-child p{color:var(--ink);font-weight:400}
+.dk .psr,.dk .psr>div+div{border-color:var(--line-d)}
+.dk .psr p{color:var(--mute-d)}
+.dk .psr>div:last-child p{color:var(--paper)}
+@media(max-width:820px){.psr{grid-template-columns:minmax(0,1fr)}.psr>div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}.dk .psr>div+div{border-top-color:var(--line-d)}}
+
 /* mobile story: stage hidden, each beat carries its own screen */
 @media(max-width:900px){
   .cine{grid-template-columns:minmax(0,1fr)}
@@ -356,6 +367,7 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
       <span class="lbl">01 · Simplify &amp; automate</span>
       <p class="qline"><b>Your question</b>“What process did you simplify or automate? What did it look like before and after?”</p>
       <h2>From dozens of forms to one onboarding engine.</h2>
+      <div class="psr"><div><span class="lbl">Problem</span><p>Onboarding a supplier meant dozens of separate Microsoft Forms, answers scattered across emails and spreadsheets, and manual follow-ups. Around 3 new suppliers a year, company-wide.</p></div><div><span class="lbl">How I solved it</span><p>I simplified the journey first, then built one self-service platform: 13 steps in six phases, from company setup and airport pricing to contract signing, with a live dashboard for the team.</p></div><div><span class="lbl">Result</span><p>10 companies in 5 weeks, adopted by a team of 20, and now in production connected to the Transferz API.</p></div></div>
     </div>
     <div class="cine" data-cine>
       <div class="beats">
@@ -417,6 +429,7 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
     <div class="case">
       <span class="lbl">Case A · New York sourcing</span>
       <h3>Using public data to find new suppliers in New York.</h3>
+      <div class="psr"><div><span class="lbl">Problem</span><p>We needed more supply in New York, but finding compliant transport companies meant searching several public databases by hand.</p></div><div><span class="lbl">How I solved it</span><p>I connected six NYC Open Data APIs into one tool: live licence checks, licensed bases matched to contact details, and companies ranked by fleet size, upcoming licence renewals and service type.</p></div><div><span class="lbl">Result</span><p>94 new taxi companies onboarded this year, against 55 in 2025 and 40 in 2024.</p></div></div>
       <div class="wtxt">
         <p class="txt">We needed to grow our New York supply. But finding reliable transport companies meant manually searching multiple public databases, checking licences and hunting for contact details.</p>
         <p class="txt">The information was there. Nobody had connected it. So I did.</p>
@@ -467,6 +480,7 @@ footer{padding-block:28px;font-size:13px;color:var(--mute);border-top:1px solid 
     <div class="case">
       <span class="lbl">Case B · Personal project · Market intelligence</span>
       <h3>Understanding demand in the wellness market.</h3>
+      <div class="psr"><div><span class="lbl">Problem</span><p>Booking availability in the wellness market is public, but booking behaviour isn’t. Nobody publishes how these businesses actually fill up.</p></div><div><span class="lbl">How I solved it</span><p>I built scrapers that check public booking pages up to 96 times a day across 20+ locations. Every slot that disappears becomes a timestamped booking, combined with weather data and a weekly AI summary.</p></div><div><span class="lbl">Result</span><p>A dataset of real demand: peak hours, sell-out rates, how far ahead people book and how weather shifts demand.</p></div></div>
       <div class="wtxt">
         <p class="txt">A personal project, for practice and out of curiosity. I like to understand how markets really work, and I always start with data combined with commercial gut feeling.</p>
         <p class="txt">So I built competitive intelligence on the whole wellness market, to understand how wellness businesses actually fill up.</p>
